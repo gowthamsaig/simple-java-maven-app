@@ -6,19 +6,19 @@ echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'
 echo 'volume).'
 set -x
 
-M3/bin/mvn jar:jar install:install help:evaluate -Dexpression=project.name
+${mvnHome}/bin/mvn jar:jar install:install help:evaluate -Dexpression=project.name
 set +x
 
 echo 'The following command extracts the value of the <name/> element'
 echo 'within <project/> of your Java/Maven project''s "pom.xml" file.'
 set -x
-NAME=`M3/bin/mvn -q -DforceStdout help:evaluate -Dexpression=project.name`
+NAME=`${mvnHome}/bin/mvn -q -DforceStdout help:evaluate -Dexpression=project.name`
 set +x
 
 echo 'The following command behaves similarly to the previous one but'
 echo 'extracts the value of the <version/> element within <project/> instead.'
 set -x
-VERSION=`M3/bin/mvn -q -DforceStdout help:evaluate -Dexpression=project.version`
+VERSION=`${mvnHome}/bin/mvn -q -DforceStdout help:evaluate -Dexpression=project.version`
 set +x
 
 echo 'The following command runs and outputs the execution of your Java'
